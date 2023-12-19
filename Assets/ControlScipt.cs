@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
+//class to control MainCamera as a free cam
 public class ControlScipt : MonoBehaviour
 {
     //Varaiables
@@ -12,17 +12,17 @@ public class ControlScipt : MonoBehaviour
 
 
 
-    // Start is called before the first frame update
+    // Start used to add a Camera Lock for cursor, can be entered by clicking screen in Unity, and left with escape
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         
     }
 
-    // Update is called once per frame
+    // Update is called once per frame, used for camera control inputs
     void Update()
     {
-        //Move camera x/y/z axis'
+        //Move camera x/y/z axis' using keys A/D, Space/LeftShift and W/S respectively
         transform.position += transform.forward * Input.GetAxis("Vertical") * camSpeed * Time.deltaTime;
         transform.position += transform.right * Input.GetAxis("Horizontal") * camSpeed * Time.deltaTime;
         if(Input.GetKey(KeyCode.Space))
