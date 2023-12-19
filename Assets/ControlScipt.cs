@@ -7,8 +7,8 @@ using UnityEngine;
 public class ControlScipt : MonoBehaviour
 {
     //Varaiables
-    public float camSpeed = 5.0f;    
-    public float camSens = 5.0f;
+    public float camSpeed = 50.0f;    
+    public float camSens = 1.0f;
 
 
 
@@ -22,9 +22,17 @@ public class ControlScipt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Move camera x/z axis'
+        //Move camera x/y/z axis'
         transform.position += transform.forward * Input.GetAxis("Vertical") * camSpeed * Time.deltaTime;
         transform.position += transform.right * Input.GetAxis("Horizontal") * camSpeed * Time.deltaTime;
+        if(Input.GetKey(KeyCode.Space))
+        {
+            transform.position += transform.up * camSpeed * Time.deltaTime;
+        }
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            transform.position += transform.up * -1f * camSpeed * Time.deltaTime;
+        }
 
         //Rotation from mouse movement
         float miceX =Input.GetAxis("Mouse X");
